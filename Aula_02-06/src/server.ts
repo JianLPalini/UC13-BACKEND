@@ -40,6 +40,4 @@ app.listen(PORTA, () => {
     console.log("Elisa Lopes está conectada no servidor!")
 })
 
-aa
-
 
