@@ -16,6 +16,9 @@ export class Selecao {
     @Column({ length: 100, nullable: false, unique: true })
     pais: string;
 
+    @Column({ length: 100, nullable: false, })
+    tecnico: string;
+
     @Column({ nullable: false, unique: true })
     rankingFifa: number;
 
