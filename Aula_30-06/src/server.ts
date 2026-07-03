@@ -1,9 +1,12 @@
 import  express  from "express";
 import * as dotenv from 'dotenv'
 import { AppDataSource } from "../src/config/data-source";
+import { routes } from "./routes";
 
 const app = express()
 dotenv.config()
+
+app.use(routes)
 
 const PORT = process.env.PORT // pega o valor da variável PORT que está no .env
 
