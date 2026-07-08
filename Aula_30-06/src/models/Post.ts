@@ -11,6 +11,6 @@ export class Post {
     length:100, nullable:false})
     title:string
 
-    @ManyToOne(() => User, user => user.posts)
+    @ManyToOne(() => User, user => user.posts, {nullable: false})
     user:User
 }

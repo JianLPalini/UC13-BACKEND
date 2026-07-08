@@ -18,10 +18,10 @@ export class User {
     @Column({length:100, nullable:false}) 
     name:string;
 
-    @Column({length:150, nullable:false}) 
+    @Column({length:150, unique: true, nullable:false}) 
     email:string;
 
-    @Column({length:100, unique:true}) 
+    @Column({length:100, nullable:false, select:false}) 
     password:string;
     
     // @OneToMany indica que um User pode ter vários Post
