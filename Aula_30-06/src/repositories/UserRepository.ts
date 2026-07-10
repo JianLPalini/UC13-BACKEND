@@ -21,6 +21,12 @@ export const UserRepository = {
         return repo.findOne({where:{id}, relations:['posts']})
     },
 
+    // Método para encontra um jaguara achamado email
+    // vai ser utilizado no login
+    async findByEmail(email:string){
+        return repo.findOne({where: {email}})
+    },
+
     async create(data: {name:string, email: string, password:string}){
         // cria o usuário
         const user = repo.create(data)
