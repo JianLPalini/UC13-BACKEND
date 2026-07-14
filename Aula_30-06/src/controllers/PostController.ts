@@ -45,12 +45,10 @@ export class PostController {
     // POST /posts
     async create(req: Request, res: Response, next: NextFunction) {
         try {
-            const { title, userId } = req.body;
+            const { title} = req.body;
+            const loggedUser = (req as any).user;
 
-            const post = await PostService.create({
-                title,
-                userId
-            });
+            const post = await PostService.create({title}, loggedUser.id);
 
             return res.status(201).json(post);
         } catch (error) {
@@ -62,11 +60,11 @@ export class PostController {
     async update(req: Request, res: Response, next: NextFunction) {
         try {
             const id = Number(req.params.id);
+            
             const { title } = req.body;
-
-            const post = await PostService.update(id, {
-                title
-            });
+            const loggedUser = (req as any).user;
+            
+            const post = await PostService.update(id, {title}, loggedUser.id);
 
             return res.status(200).json(post);
         } catch (error) {
@@ -78,9 +76,8 @@ export class PostController {
     async delete(req: Request, res: Response, next: NextFunction) {
         try {
             const id = Number(req.params.id);
-
             await PostService.delete(id);
-
+            
             return res.status(204).send();
         } catch (error) {
             next(error);
